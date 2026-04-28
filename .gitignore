@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build and Dist
+build/
+dist/
+*.spec
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Config & Data
+src/config/history.json
+
+# IDEs
+.vscode/
+.idea/
+# Binaries
+bin/
+*.exe
+*.zip
