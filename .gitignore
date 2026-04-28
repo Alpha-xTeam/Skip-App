@@ -9,6 +9,10 @@ build/
 dist/
 *.spec
 
+# Git
+.gitignore
+RELEASE_GUIDE.MD
+
 # Virtual Environment
 venv/
 .venv/
