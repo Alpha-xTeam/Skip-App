@@ -4,8 +4,9 @@ import os
 import shutil
 
 def main():
-    bin_dir = r"c:\Projects\Skip\bin"
+    bin_dir = os.path.join(os.path.dirname(__file__), "bin")
     os.makedirs(bin_dir, exist_ok=True)
+
     zip_path = os.path.join(bin_dir, "ffmpeg.zip")
     
     print("Downloading ffmpeg (this might take a minute)...")
