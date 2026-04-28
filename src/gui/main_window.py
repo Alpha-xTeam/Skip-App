@@ -81,7 +81,7 @@ class MainWindow(ctk.CTk):
         self.nav_buttons = {}
         self.nav_buttons["downloads"] = self.create_nav_item("Downloads", "📥", "downloads")
         self.nav_buttons["library"] = self.create_nav_item("Library", "📁", "library")
-        self.nav_buttons["settings"] = self.create_nav_item("Settings", "⚙️", "settings")
+
         
     def create_nav_item(self, label, icon, page_name):
         btn = ctk.CTkButton(
@@ -107,7 +107,7 @@ class MainWindow(ctk.CTk):
 
         self.pages["downloads"] = self.create_downloads_page()
         self.pages["library"] = self.create_library_page()
-        self.pages["settings"] = self.create_settings_page()
+
 
     def show_page(self, page_name):
         if self.current_page:
@@ -285,40 +285,7 @@ class MainWindow(ctk.CTk):
         self.history_mgr.clear_history()
         self.load_history_entries()
 
-    def create_settings_page(self):
-        page = ctk.CTkFrame(self.container, fg_color="transparent")
-        page.grid_columnconfigure(0, weight=1)
-        
-        ctk.CTkLabel(page, text="Settings", font=Theme.FONT_TITLE, text_color=Theme.TEXT_MAIN).grid(row=0, column=0, sticky="w", pady=(0, 30))
-        
-        card = ctk.CTkFrame(page, fg_color=Theme.CARD_BG, corner_radius=15, border_width=1, border_color=Theme.INPUT_BG)
-        card.grid(row=1, column=0, sticky="ew")
-        
-        # Smart Clipboard Toggle
-        row_cp = ctk.CTkFrame(card, fg_color="transparent")
-        row_cp.pack(fill="x", padx=30, pady=15)
-        ctk.CTkLabel(row_cp, text="Smart Clipboard (Auto-Paste)", font=("Segoe UI", 13)).pack(side="left")
-        self.paste_switch = ctk.CTkSwitch(row_cp, text="", progress_color=Theme.PRIMARY, command=self.toggle_auto_paste)
-        self.paste_switch.pack(side="right")
-        if self.auto_paste_enabled: self.paste_switch.select()
-        
-        settings = [
-            ("High Quality Downloads", True),
-            ("GPU Acceleration", True)
-        ]
-        
-        for label, state in settings:
-            row = ctk.CTkFrame(card, fg_color="transparent")
-            row.pack(fill="x", padx=30, pady=15)
-            ctk.CTkLabel(row, text=label, font=("Segoe UI", 13)).pack(side="left")
-            s = ctk.CTkSwitch(row, text="", progress_color=Theme.PRIMARY)
-            s.pack(side="right")
-            if state: s.select()
-            
-        return page
 
-    def toggle_auto_paste(self):
-        self.auto_paste_enabled = self.paste_switch.get()
 
     def select_folder(self):
         folder = filedialog.askdirectory()

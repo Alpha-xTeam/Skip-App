@@ -20,6 +20,7 @@ args = [
     '--hidden-import=customtkinter',
     '--hidden-import=yt_dlp',
     '--hidden-import=tkinter',
+    f'--icon={os.path.abspath("src/ChatGPT_Image_Apr_28__2026__06_30_59_AM-removebg-preview.ico")}',
     '--clean',
 ]
 
